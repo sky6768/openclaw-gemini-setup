@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "google": {
+      "provider": "google",
+      "auth": "api-key",
+      "apiKey": "your-gemini-api-key-here"
+    }
+  }
+}
