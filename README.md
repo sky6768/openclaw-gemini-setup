@@ -25,6 +25,7 @@ OpenClaw is a personal AI assistant that runs on your own devices and integrates
 - ✅ **Complete Setup Guide** - Step-by-step instructions for Gemini API integration
 - ✅ **Automated Scripts** - One-command setup and API key management
 - ✅ **Bilingual Documentation** - Full English and Chinese documentation
+- ✅ **Telegram Dual-Bot Setup** - Configure two bots with different models (Flash & Pro)
 - ✅ **Security Best Practices** - Proper API key management and storage
 - ✅ **Troubleshooting Guide** - Common issues and solutions
 - ✅ **Template Files** - Ready-to-use configuration templates
@@ -222,6 +223,7 @@ openclaw-gemini-setup/
 │   └── openclaw.json.example          # OpenClaw config template
 ├── docs/
 │   ├── installation-guide.md          # Detailed installation guide
+│   ├── telegram-dual-bot-setup.md     # Telegram dual-bot configuration (NEW)
 │   ├── troubleshooting.md             # Troubleshooting guide
 │   └── api-key-management.md          # API key best practices
 ├── .gitignore                         # Git ignore rules
@@ -231,6 +233,7 @@ openclaw-gemini-setup/
 ### 📚 Documentation
 
 - [Installation Guide](docs/installation-guide.md) - Detailed setup instructions
+- [Telegram Dual-Bot Setup](docs/telegram-dual-bot-setup.md) - Configure two bots with different models (Flash & Pro) ⭐ **NEW**
 - [Troubleshooting](docs/troubleshooting.md) - Common issues and solutions
 - [API Key Management](docs/api-key-management.md) - Security best practices
 - [Contributing Guide](CONTRIBUTING.md) - How to contribute
@@ -276,6 +279,7 @@ OpenClaw 是一个运行在您自己设备上的个人 AI 助手，可以集成�
 - ✅ **完整配置指南** - Gemini API 集成的分步说明
 - ✅ **自动化脚本** - 一键设置和 API Key 管理
 - ✅ **双语文档** - 完整的中英文文档
+- ✅ **Telegram 双 Bot 配置** - 配置两个使用不同模型的 Bot（Flash 和 Pro）
 - ✅ **安全最佳实践** - 正确的 API Key 管理和存储
 - ✅ **故障排除指南** - 常见问题和解决方案
 - ✅ **模板文件** - 即用型配置模板
@@ -482,6 +486,7 @@ openclaw-gemini-setup/
 ### 📚 文档
 
 - [安装指南](docs/installation-guide.md) - 详细设置说明
+- [Telegram 双 Bot 配置指南](docs/telegram-dual-bot-setup.md) - 配置两个使用不同模型的 Bot（Flash 和 Pro）⭐ **新增**
 - [故障排除](docs/troubleshooting.md) - 常见问题和解决方案
 - [API Key 管理](docs/api-key-management.md) - 安全最佳实践
 - [贡献指南](CONTRIBUTING.md) - 如何贡献
