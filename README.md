@@ -1,10 +1,12 @@
-# OpenClaw Gemini API Configuration Guide
+# OpenClaw + Claude Sonnet 4.5 via Antigravity Manager
 
-# OpenClaw Gemini API 配置指南
+# OpenClaw + Claude Sonnet 4.5 通过 Antigravity Manager
 
 [![GitHub stars](https://img.shields.io/github/stars/sky6768/openclaw-gemini-setup?style=social)](https://github.com/sky6768/openclaw-gemini-setup)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.2.9-blue)](https://openclaw.ai)
+[![Claude](https://img.shields.io/badge/Claude-Sonnet%204.5-orange)](https://www.anthropic.com/claude)
+[![Antigravity Manager](https://img.shields.io/badge/Antigravity%20Manager-v4.1.15-green)](https://github.com/antigravity-tools)
 
 [English](#english) | [中文](#中文)
 
@@ -16,23 +18,81 @@
 
 ### 📖 Overview
 
-A comprehensive guide to configure **Google Gemini API** with **OpenClaw**, including automated setup scripts, bilingual documentation, and troubleshooting guides.
+A complete guide to configure **Claude Sonnet 4.5** with **OpenClaw** via **Antigravity Manager**, featuring graphical OAuth management, multi-account pooling, and intelligent fallback mechanisms.
 
-OpenClaw is a personal AI assistant that runs on your own devices and integrates with multiple messaging platforms. This guide helps you configure it to use Google's Gemini API as the default AI model.
+OpenClaw is a personal AI assistant that runs on your own devices. This guide shows you how to integrate Claude Sonnet 4.5 through Google Antigravity API using Antigravity Manager for seamless account management.
 
 ### ✨ Features
 
-- ✅ **Complete Setup Guide** - Step-by-step instructions for Gemini API integration
-- ✅ **Automated Scripts** - One-command setup and API key management
-- ✅ **Bilingual Documentation** - Full English and Chinese documentation
-- ✅ **Telegram Dual-Bot Setup** - Configure two bots with different models (Flash & Pro)
-- ✅ **Security Best Practices** - Proper API key management and storage
-- ✅ **Troubleshooting Guide** - Common issues and solutions
-- ✅ **Template Files** - Ready-to-use configuration templates
+- ✅ **Claude Sonnet 4.5 Integration** - Access Claude via Google Antigravity API
+- ✅ **Antigravity Manager** - GUI for OAuth and multi-account management  
+- ✅ **Multi-Account Pooling** - Automatic rotation across multiple Google accounts
+- ✅ **Cost Optimization** - 40% cheaper than Opus 4.5 ($3/$15 vs $5/$25 per million tokens)
+- ✅ **Intelligent Fallback** - Claude → Gemini 2.5 Pro → Gemini 2.0 Flash
+- ✅ **Bilingual Documentation** - Complete Chinese and English docs
+- ✅ **Fully Tested** - All configurations verified and working
+- ✅ **No Manual OAuth** - Antigravity Manager handles authentication in GUI
 
 ### 🚀 Quick Start
 
-#### Prerequisites
+> **NEW**: This guide now includes Claude Sonnet 4.5 setup via Antigravity Manager! See the [Claude Setup](#claude-setup) section below.
+
+#### Option 1: Claude Sonnet 4.5 via Antigravity Manager (Recommended)
+
+##### Prerequisites
+
+- OpenClaw installed (version 2026.2.9 or later)
+- Node.js ≥ 22
+- Ubuntu 24.04 LTS (or other Linux distribution)
+- Google account with Cloud Code Assist access and Credits
+
+##### Installation
+
+1. **Install Antigravity Manager:**
+   ```bash
+   wget https://github.com/antigravity-tools/antigravity-manager/releases/download/v4.1.15/Antigravity.Tools_4.1.15_amd64.deb
+   sudo dpkg -i Antigravity.Tools_4.1.15_amd64.deb
+   antigravity_tools &
+   ```
+
+2. **Configure Antigravity Manager:**
+   - Set API Key: `sk-antigravity-openclaw-2026`
+   - Enable API Proxy Service on port `8045`
+   - Add Google account via OAuth (in GUI)
+   - Verify: `curl http://127.0.0.1:8045/health`
+
+3. **Configure OpenClaw:**
+   Edit `~/.openclaw/openclaw.json`:
+   ```json
+   {
+     "agents": {
+       "defaults": {
+         "model": {
+           "primary": "claude-sonnet-4-5",
+           "fallbacks": ["google/gemini-2.5-pro", "google/gemini-2.0-flash"]
+         }
+       }
+     },
+     "env": {
+       "ANTHROPIC_API_KEY": "sk-antigravity-openclaw-2026",
+       "ANTHROPIC_BASE_URL": "http://127.0.0.1:8045"
+     }
+   }
+   ```
+
+4. **Restart and test:**
+   ```bash
+   openclaw gateway restart
+   openclaw agent --message "Hello! Please confirm you are Claude Sonnet 4.5"
+   ```
+
+📖 **Full Guide**: See [docs/en/](docs/en/) for detailed instructions.
+
+---
+
+#### Option 2: Google Gemini API (Original Method)
+
+##### Prerequisites
 
 - OpenClaw installed (version 2026.2.9 or later)
 - Node.js ≥ 22
@@ -232,8 +292,15 @@ openclaw-gemini-setup/
 
 ### 📚 Documentation
 
+#### Claude + Antigravity Manager Setup (NEW)
+- [01 - Antigravity Manager Setup Guide](docs/en/01-Antigravity-Manager-Setup-Guide.md) - Install and configure Antigravity Manager
+- [02 - Claude Sonnet 4.5 Setup Guide](docs/en/02-Claude-Sonnet-4.5-Setup-Guide.md) - Configure OpenClaw for Claude
+- [03 - Test Report](docs/en/03-Test-Report.md) - Complete test results and verification
+- [04 - Quick Reference](docs/en/04-Quick-Reference.md) - Quick commands and troubleshooting
+
+#### Gemini API Setup (Original)
 - [Installation Guide](docs/installation-guide.md) - Detailed setup instructions
-- [Telegram Dual-Bot Setup](docs/telegram-dual-bot-setup.md) - Configure two bots with different models (Flash & Pro) ⭐ **NEW**
+- [Telegram Dual-Bot Setup](docs/telegram-dual-bot-setup.md) - Configure two bots with different models (Flash & Pro)
 - [Troubleshooting](docs/troubleshooting.md) - Common issues and solutions
 - [API Key Management](docs/api-key-management.md) - Security best practices
 - [Contributing Guide](CONTRIBUTING.md) - How to contribute
@@ -270,23 +337,81 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### 📖 概述
 
-这是一个完整的指南，帮助您将 **Google Gemini API** 集成到 **OpenClaw** 中，包含自动化配置脚本、双语文档和故障排除指南。
+这是一个完整的指南，帮助您通过 **Antigravity Manager** 在 **OpenClaw** 上配置 **Claude Sonnet 4.5** 模型，具备图形化 OAuth 管理、多账号池和智能回退机制。
 
-OpenClaw 是一个运行在您自己设备上的个人 AI 助手，可以集成多个消息平台。本指南将帮助您将其配置为使用 Google 的 Gemini API 作为默认 AI 模型。
+OpenClaw 是一个运行在您自己设备上的个人 AI 助手。本指南将向您展示如何通过 Antigravity Manager 使用 Google Antigravity API 集成 Claude Sonnet 4.5，实现无缝账号管理。
 
 ### ✨ 功能特性
 
-- ✅ **完整配置指南** - Gemini API 集成的分步说明
-- ✅ **自动化脚本** - 一键设置和 API Key 管理
+- ✅ **Claude Sonnet 4.5 集成** - 通过 Google Antigravity API 访问 Claude
+- ✅ **Antigravity Manager** - 图形化 OAuth 和多账号管理
+- ✅ **多账号池** - 多个 Google 账号自动轮询
+- ✅ **成本优化** - 比 Opus 4.5 便宜 40%（$3/$15 vs $5/$25 每百万 tokens）
+- ✅ **智能回退** - Claude → Gemini 2.5 Pro → Gemini 2.0 Flash
 - ✅ **双语文档** - 完整的中英文文档
-- ✅ **Telegram 双 Bot 配置** - 配置两个使用不同模型的 Bot（Flash 和 Pro）
-- ✅ **安全最佳实践** - 正确的 API Key 管理和存储
-- ✅ **故障排除指南** - 常见问题和解决方案
-- ✅ **模板文件** - 即用型配置模板
+- ✅ **完全测试** - 所有配置已验证并正常工作
+- ✅ **无需手动 OAuth** - Antigravity Manager 在图形界面处理认证
 
 ### 🚀 快速开始
 
-#### 前置要求
+> **新增**: 本指南现在包含通过 Antigravity Manager 配置 Claude Sonnet 4.5！请参阅下方的 [Claude 配置](#claude-配置)部分。
+
+#### 选项 1: 通过 Antigravity Manager 使用 Claude Sonnet 4.5（推荐）
+
+##### 前置要求
+
+- 已安装 OpenClaw（版本 2026.2.9 或更高）
+- Node.js ≥ 22
+- Ubuntu 24.04 LTS（或其他 Linux 发行版）
+- 有 Cloud Code Assist 访问权限和 Credits 的 Google 账号
+
+##### 安装步骤
+
+1. **安装 Antigravity Manager：**
+   ```bash
+   wget https://github.com/antigravity-tools/antigravity-manager/releases/download/v4.1.15/Antigravity.Tools_4.1.15_amd64.deb
+   sudo dpkg -i Antigravity.Tools_4.1.15_amd64.deb
+   antigravity_tools &
+   ```
+
+2. **配置 Antigravity Manager：**
+   - 设置 API Key: `sk-antigravity-openclaw-2026`
+   - 在端口 `8045` 启用 API 反代服务
+   - 通过 OAuth 添加 Google 账号（在图形界面中）
+   - 验证: `curl http://127.0.0.1:8045/health`
+
+3. **配置 OpenClaw：**
+   编辑 `~/.openclaw/openclaw.json`:
+   ```json
+   {
+     "agents": {
+       "defaults": {
+         "model": {
+           "primary": "claude-sonnet-4-5",
+           "fallbacks": ["google/gemini-2.5-pro", "google/gemini-2.0-flash"]
+         }
+       }
+     },
+     "env": {
+       "ANTHROPIC_API_KEY": "sk-antigravity-openclaw-2026",
+       "ANTHROPIC_BASE_URL": "http://127.0.0.1:8045"
+     }
+   }
+   ```
+
+4. **重启并测试：**
+   ```bash
+   openclaw gateway restart
+   openclaw agent --message "你好！请确认你是 Claude Sonnet 4.5"
+   ```
+
+📖 **完整指南**: 详见 [docs/zh-CN/](docs/zh-CN/) 获取详细说明。
+
+---
+
+#### 选项 2: Google Gemini API（原始方法）
+
+##### 前置要求
 
 - 已安装 OpenClaw（版本 2026.2.9 或更高）
 - Node.js ≥ 22
@@ -485,8 +610,15 @@ openclaw-gemini-setup/
 
 ### 📚 文档
 
+#### Claude + Antigravity Manager 配置（新增）
+- [01 - Antigravity Manager 安装配置指南](docs/zh-CN/01-Antigravity-Manager安装配置指南.md) - 安装和配置 Antigravity Manager
+- [02 - Claude Sonnet 4.5 配置指南](docs/zh-CN/02-Claude-Sonnet-4.5配置指南.md) - 为 Claude 配置 OpenClaw
+- [03 - 测试报告](docs/zh-CN/03-测试报告.md) - 完整测试结果和验证
+- [04 - 快速参考](docs/zh-CN/04-快速参考.md) - 快速命令和故障排除
+
+#### Gemini API 配置（原有）
 - [安装指南](docs/installation-guide.md) - 详细设置说明
-- [Telegram 双 Bot 配置指南](docs/telegram-dual-bot-setup.md) - 配置两个使用不同模型的 Bot（Flash 和 Pro）⭐ **新增**
+- [Telegram 双 Bot 配置指南](docs/telegram-dual-bot-setup.md) - 配置两个使用不同模型的 Bot（Flash 和 Pro）
 - [故障排除](docs/troubleshooting.md) - 常见问题和解决方案
 - [API Key 管理](docs/api-key-management.md) - 安全最佳实践
 - [贡献指南](CONTRIBUTING.md) - 如何贡献
